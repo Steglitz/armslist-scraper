@@ -13,7 +13,8 @@ from models.index import IndexPage
 from utils import eprint
 
 ARMSLIST_SEARCH_URL = 'http://www.armslist.com/classifieds/search'
-STOP_DATETIME = datetime(2016, 3, 15, 0, 0, 0)
+# STOP_DATETIME = datetime(2017, 7, 24, 0, 0, 0)
+STOP_DATETIME = datetime(2017, 4, 1, 0, 0, 0)
 DEFAULT_QUERY_ARGUMENTS = [
     ('category', 'guns'),
     ('posttype', '3'),

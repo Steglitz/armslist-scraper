@@ -1,4 +1,8 @@
+import requests
+
 from bs4 import BeautifulSoup
+from dateutil.parser import parse
+from models.related import Related
 
 class Listing:
     def __init__(self, html):
@@ -129,12 +133,16 @@ class Listing:
         else:
             time_tag = False
         return time_tag
-        # returns if unregistered or registered and date
-        # if not time_tag:
-        #     time_tag = 'Unregistered'
-        # return time_tag.text.strip()
 
     @property
     def party(self):
         party = self._soup.find('strong', {'class': 'title'}).text.strip().split(' ', 1)[0]
         return party
+
+    @property
+    def related(self):
+        href = self._soup.find('a', {'class': 'more'}).get('href')
+        href = 'http://www.armslist.com{0}'.format(href)
+        resp = requests.get(href)
+        rel = Related(resp.content)
+        return rel

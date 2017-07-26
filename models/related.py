@@ -21,6 +21,7 @@ class Related:
                     id = href.split('/')[2]
                     ids.append(id)
 
+        ids.sort()
         self._ids = ids
         return ids
 

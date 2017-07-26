@@ -30,7 +30,9 @@ def scrape_listing(url):
         listing.action,
         listing.firearm_type,
         listing.party,
-        listing.img
+        listing.img,
+        ','.join(listing.related.related_ids),
+        listing.related.number_of_listings,
     ])
 
 
