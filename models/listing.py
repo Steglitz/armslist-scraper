@@ -105,7 +105,16 @@ class Listing:
 
     @property
     def listed_date(self):
-        return self._post_meta.find('span', {'class': 'date'}).text.strip()
+        raw_date = self._post_meta.find('span', {'class': 'date'}).text.strip()
+        raw_date = ' '.join(raw_date.split())
+
+        # At some point, Armslist added more "natural" date formatting for the current date
+        if raw_date.startswith('Listed today'):
+            date_string = ' '.join(raw_date.split(' ')[-2:])
+        else:
+            junk, date_string = raw_date.split(', ', 1)
+        return parse(date_string)
+
 
     @property
     def post_id(self):

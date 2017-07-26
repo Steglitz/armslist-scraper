@@ -38,5 +38,12 @@ class IndexItem:
     def listing_date(self):
         second_td = self._el.find_all('td')[1]
         third_div = second_td.find_all('div')[2]
-        junk, date_string = third_div.string.strip().split(', ')
+        raw_date = third_div.string.strip()
+        raw_date = ' '.join(raw_date.split())
+
+        # At some point, Armslist added more "natural" date formatting for the current date
+        if raw_date.startswith('Listed today'):
+            date_string = ' '.join(raw_date.split(' ')[-2:])
+        else:
+            junk, date_string = raw_date.split(', ')
         return parse(date_string)
