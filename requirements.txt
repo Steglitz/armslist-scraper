@@ -20,11 +20,6 @@ futures==3.1.1
 gnureadline==6.3.3
 html5lib==0.999999999
 invoke==0.20.1
-ipdb==0.10.0
-ipykernel==4.6.1
-ipython==4.2.0
-ipython-genutils==0.1.0
-ipywidgets==6.0.0
 jdcal==1.2
 jellyfish==0.5.0
 Jinja2==2.9.6
